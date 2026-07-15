@@ -1,0 +1,40 @@
+{%block title%}Registro{% endblock %}
+
+{% block content %}
+
+<form>
+    <div class="titulo-form">
+<h1 class="titulo">Registro</h1>
+    </div>
+
+    <div class="container-labels">
+
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre_usuario" required>
+        
+        <label for="apellido">Apellido:</label>
+        <input type="text" name="apellido_usuario" required>
+        
+        <label for="correo">Correo:</label>
+        <input type="email" name="correo_usuario" required>
+        
+        <label for="clave">Clave:</label>
+        <input type="password" name="password" required>
+        
+        <label for="clave_confirm">Clave confirmada:</label>
+        <input type="password" name="password_confirm" required>
+
+        <label for="Rol">Rol:</label>
+        <select class="rol-choose" name="rol">
+            <option value="Profesional">Profesional</option>
+             <option value="Cliente">Cliente</option>
+        </select>
+
+        <div class="btns">
+            <input type="Submit" name="btn-registrar" value="Registrarse">
+        </div>
+        
+    </div>
+
+</form>
+{%endblock  %}
