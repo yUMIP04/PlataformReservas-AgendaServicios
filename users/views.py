@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Usuario
 # Create your views here.
 
+#🌟PAGINA REGISTRO
 
 def index(request):
 
@@ -21,6 +22,13 @@ def index(request):
 
             Usuario.objects.create(nombre=nombre, apellido=apellido, correo=correo, clave=clave, rol=rol)
             print("🥳Se inserto correctamente el usuario")
+            return redirect(Inicio)
         
         
     return render(request, 'users/index.html')
+
+#🌟PAGINA INICIO
+
+def Inicio(request):
+
+    return render(request, 'users/agenda.html')
