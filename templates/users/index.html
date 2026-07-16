@@ -2,7 +2,8 @@
 
 {% block content %}
 
-<form>
+<form action="" method="post">
+    {% csrf_token %}
     <div class="titulo-form">
 <h1 class="titulo">Registro</h1>
     </div>

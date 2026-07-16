@@ -1,0 +1,27 @@
+{% block title %}Inicio de Sesion{% endblock %}
+
+{% block content  %}
+
+<form action="/inicio_sesion/" method="post">
+    {% csrf_token %}
+    <div class="titulo-form">
+<h1 class="titulo">Inicio de Sesion</h1>
+    </div>
+
+    <div class="container-labels">
+        
+        <label for="correo">Correo:</label>
+        <input type="email" name="correo_usuario" required>
+        
+        <label for="clave">Clave:</label>
+        <input type="password" name="clave" required>
+
+        <div class="btns">
+            <input type="Submit" name="btn-ingresar" value="Entrar">
+        </div>
+        
+    </div>
+
+</form>
+
+{% endblock  %}
