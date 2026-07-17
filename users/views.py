@@ -24,7 +24,7 @@ def index(request):
 
             Usuario.objects.create(nombre=nombre, apellido=apellido, correo=correo, clave=clave, rol=rol)
             print("🥳Se inserto correctamente el usuario")
-            return redirect('Inicio')
+            return redirect('inicio_sesion')
         
         
     return render(request, 'users/index.html')
@@ -39,21 +39,51 @@ def inicio_sesion(request):
     
     elif request.method == 'POST':
 
-        correo = request.POST['nombre_usuario']
+        correo = request.POST['correo_usuario']
         clave = request.POST['clave']
 
-        iniciar_sesion = Usuario.objects.filter(correo=correo, clave=clave)
+        try:
+          
+           usuario = Usuario.objects.get(correo=correo, clave=clave)
+           request.session['usuario_rol'] = usuario.rol
+           request.session['nombre_usuario'] = usuario.nombre
 
-        if iniciar_sesion:
+           if usuario.rol == "Profesional":
+               
+                print("🌟Iniciando sesion...")
+                print("🥳Inicio de sesion exitoso!")
+                return redirect('Inicio')
 
-            print("🌟Iniciando sesion...")
-            print("🥳Inicio de sesion exitoso!")
-            return redirect('Inicio')
+           elif usuario.rol == "Cliente":
+               
+                print("🌟Iniciando sesion...")
+                print("🥳Inicio de sesion exitoso!")
+                return redirect('catalogo')
         
+        except Exception as e:
+
+            print(f"Hubo un error al iniciar sesion: {e}")
+
     return render(request, 'users/login.html')
 
-#🌟PAGINA INICIO
+#🌟PAGINA AGENDA(PROFESIONAL -VIEW)
 
 def Inicio(request):
 
+    if not 'nombre_usuario' in request:
+
+        return redirect('inicio sesion')
+
     return render(request, 'users/agenda.html')
+
+#🌟PAGINA CATALOGO(CLIENTE -VIEW)
+
+def catalogo(request):
+
+    return render(request, 'users/catalogo.html')
+
+#🌟 CERRAR SESION
+
+def cerrar_sesion(request):
+
+    return redirect('inicio_sesion')
