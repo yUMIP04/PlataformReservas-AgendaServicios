@@ -26,6 +26,9 @@ def index(request):
             print("🥳Se inserto correctamente el usuario")
             return redirect('inicio_sesion')
         
+        else:
+            print("❌ No se pudo registrar usuario.")
+            return render(request, 'users/index.html')
         
     return render(request, 'users/index.html')
 
@@ -63,6 +66,7 @@ def inicio_sesion(request):
         except Exception as e:
 
             print(f"Hubo un error al iniciar sesion: {e}")
+            return render(request, 'users/login.html')
 
     return render(request, 'users/login.html')
 
@@ -70,9 +74,9 @@ def inicio_sesion(request):
 
 def Inicio(request):
 
-    if not 'nombre_usuario' in request:
+    if 'nombre_usuario' not in request.session:
 
-        return redirect('inicio sesion')
+        return redirect('inicio_sesion')
 
     return render(request, 'users/agenda.html')
 
@@ -80,10 +84,15 @@ def Inicio(request):
 
 def catalogo(request):
 
+    if 'nombre_usuario' not in request.session:
+
+        return redirect('inicio_sesion')
+
     return render(request, 'users/catalogo.html')
 
 #🌟 CERRAR SESION
 
 def cerrar_sesion(request):
 
-    return redirect('inicio_sesion')
+    request.session.flush()
+    return redirect(request, 'inicio_sesion')
