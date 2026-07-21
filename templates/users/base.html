@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Base{% endblock %}</title>
+
+    <!-- 🌟 TAILWINDCSS -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- 🌟 ICONOS BOXICONS -->
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/filled/boxicons-filled.min.css" rel="stylesheet">
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/brands/boxicons-brands.min.css" rel="stylesheet">
+</head>
+<body>
+
+  
+    <header class="p-10 bg-white shadow-sm">
+        <ul class="flex gap-6 items-center">
+            <li><a href="">Ver Mis Servicios</a></li>
+            <li>
+                <a href="" class="flex items-center gap-2">
+                    <i class="bx bx-user-circle text-xl"></i> 
+                    {{ request.session.nombre_usuario }}
+                </a>
+            </li>
+        </ul>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+  
+
+</body>
+</html>

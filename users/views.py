@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Usuario
+
 # Create your views here.
 
 """=================== RUTAS ==================="""
@@ -55,7 +56,7 @@ def inicio_sesion(request):
                
                 print("🌟Iniciando sesion...")
                 print("🥳Inicio de sesion exitoso!")
-                return redirect('Inicio')
+                return redirect('ListaServicios')
 
            elif usuario.rol == "Cliente":
                
