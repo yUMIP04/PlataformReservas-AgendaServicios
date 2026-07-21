@@ -70,26 +70,6 @@ def inicio_sesion(request):
 
     return render(request, 'users/login.html')
 
-#🌟PAGINA AGENDA(PROFESIONAL -VIEW)
-
-def Inicio(request):
-
-    if 'nombre_usuario' not in request.session:
-
-        return redirect('inicio_sesion')
-
-    return render(request, 'users/agenda.html')
-
-#🌟PAGINA CATALOGO(CLIENTE -VIEW)
-
-def catalogo(request):
-
-    if 'nombre_usuario' not in request.session:
-
-        return redirect('inicio_sesion')
-
-    return render(request, 'users/catalogo.html')
-
 #🌟 CERRAR SESION
 
 def cerrar_sesion(request):
