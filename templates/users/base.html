@@ -18,18 +18,22 @@
   
     <header class="p-4 bg-white shadow-sm">
         <ul class="flex flex-row justify-end items-center gap-20">
-            <li><a href="">Ver Mis Servicios</a></li>
-            <li class="">
-                <a href="" class="flex items-center gap-2 cursor-pointer">
+            <li><a href="" class="" >Ver Mis Servicios</a></li>
+          
+
+            <li class="flex items-center gap-2 cursor-pointer">
+                
                     <i class="bx bx-user-circle text-xl"></i> 
-                    {{ request.session.nombre_usuario }}<i class="bx bx-caret-big-left cursor-pointer" /></i>
-                </a>
-            </li>
+                    {{ request.session.nombre_usuario }} 
+            <div class="btns-abrir-cerrar">
+                <button class="btn-abrir cursor-pointer"><i class="bx bx-caret-big-left" /> </i></button>
+            </div>
+                </li>
         </ul>
     </header>
   <!--Opciones-->
 
-    <div class="p-1 rounded-md opciones bg-gray-300 absolute left-285 top-9 hover:bg-red-600 hover:text-white duration-300 ease-in-out">
+    <div class="p-1 rounded-md opciones bg-gray-300 hidden left-350 top-9 hover:bg-red-600 hover:text-white duration-300 ease-in-out">
         <ul>
             <li><a href="{% url "cerrar_sesion" %}">Cerrar Sesion</a></li>
             <hr>

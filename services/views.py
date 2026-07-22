@@ -18,9 +18,9 @@ def crear_servicios(request):
 
     if request.method == 'GET':
 
-        return render(request, "crear_servicio.html")
+        return render(request, "services/crear_servicio.html")
         
-    return render(request, "crear_servicio.html")
+    return render(request, "services/crear_servicio.html")
 
 #🌟EDITAR DE SERVICIOS
 
