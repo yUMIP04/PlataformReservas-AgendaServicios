@@ -76,4 +76,4 @@ def inicio_sesion(request):
 def cerrar_sesion(request):
 
     request.session.flush()
-    return redirect(request, 'inicio_sesion')
+    return render(request, 'users/login.html')
