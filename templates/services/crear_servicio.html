@@ -1,1 +1,52 @@
+{% extends "users/base.html" %}
+
 {% block title  %}Crear servicios{% endblock  %}
+
+{% block content %}
+
+  <div class="create-service">
+
+        <div class="formulario-servicio">
+            <form action="" method="post">
+
+                <div class="titulo-form">
+                    <h1 class="form-titulo">Registra un nuevo Servicio</h1>
+                </div>
+
+                <label for="name-service">Nombre del servicio:</label>
+                <input type="text" id="input-name-service" class="input-name-service" required>
+                
+                <label for="descripcion-service">Descripcion del servicio:</label>
+                <input type="text" id="input-descripcion-service" class="input-descripcion-service" required>
+
+                
+                <div class="titulo-form">
+                    <h2 class="form-titulo2">Horario de Trabajo</h2>
+                </div>
+                
+                <label for="hora-inicio">Hora de inicio:</label>
+                <input type="time" id="input-hora-inicio" class="input-hora-inicio" required>
+
+                
+                <label for="hora-fin">Hora de fin:</label>
+                <input type="time" id="input-hora-fin" class="input-hora-fin" required>
+
+                
+                <label for="time-cita">Tiempo limite de cita:</label>
+                <select name="time-cita" id="">
+                    <option value="15 minutos">15 minutos</option>
+                     <option value="30 minutos">30 minutos</option>
+                      <option value="45 minutos">45 minutos</option>
+                       <option value="1 hora">1 hora</option>
+                       <option value="2 horas">2 hora(s)</option>
+                       <option value="3 horas">3 hora(s)</option>
+                       <option value="4 horas">4 hora(s)</option>
+                </select>
+
+                <div class="btn-crear">
+                    <input type="submit" value="Crear Servicio">
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock  %}
