@@ -9,7 +9,8 @@
 <div class="create-service h-146 max-h-146 min-h-100 w-296 max-w-296 min-w-100 flex flex-row items-center justify-center gap-10 ">
 
         <div class="formulario-servicio bg-[#FAFBF5] p-10 rounded-md ">
-            <form action="" method="post" class="flex flex-col">
+            <form action="/crearServicios/" method="post" class="flex flex-col">
+                {% csrf_token %}
 
                 <div class="titulo-form mb-8">
                     <h1 class="form-titulo font-[Roboto] text-2xl font-medium text-center text-[#659287]"><i class="bx bx-task text-3xl" /></i>Registra un nuevo Servicio</h1>
@@ -17,10 +18,10 @@
 
                 <div class="info-general flex flex-col font-[Roboto] text-left ">
                 <label for="name-service ">Nombre del servicio:</label>
-                <input type="text" id="input-name-service" class="input-name-service  bg-[#E8E1E1] p-1 rounded-md focus:border-2 focus:border-[#659287] focus:outline-none" required>
+                <input type="text" name="name_service" id="input-name-service" class="input-name-service  bg-[#E8E1E1] p-1 rounded-md focus:border-2 focus:border-[#659287] focus:outline-none" required>
                 
                 <label for="descripcion-service">Descripcion del servicio:</label>
-                <input type="text" id="input-descripcion-service" class="input-descripcion-service bg-[#E8E1E1] p-1 rounded-md focus:border-2 focus:border-[#659287] focus:outline-none" required>
+                <input type="text" name="descrip_service" id="input-descripcion-service" class="input-descripcion-service bg-[#E8E1E1] p-1 rounded-md focus:border-2 focus:border-[#659287] focus:outline-none" required>
 
                 </div>
 
@@ -32,15 +33,15 @@
                 
                 <div class="info-explic flex flex-col">
                 <label for="hora-inicio">Hora de inicio:</label>
-                <input type="time" id="input-hora-inicio" class="input-hora-inicio bg-[#E8E1E1] p-1 rounded-md focus:border-2 focus:border-[#659287] focus:outline-none" required>
+                <input type="time" name="horaInicio_service" id="input-hora-inicio" class="input-hora-inicio bg-[#E8E1E1] p-1 rounded-md focus:border-2 focus:border-[#659287] focus:outline-none" required>
 
                 
                 <label for="hora-fin">Hora de fin:</label>
-                <input type="time" id="input-hora-fin" class="input-hora-fin bg-[#E8E1E1] p-1 rounded-md focus:border-2 focus:border-[#659287] focus:outline-none" required>
+                <input type="time" name="horaFin_service" id="input-hora-fin" class="input-hora-fin bg-[#E8E1E1] p-1 rounded-md focus:border-2 focus:border-[#659287] focus:outline-none" required>
 
                 
                 <label for="time-cita">Tiempo limite de cita:</label>
-                <select name="time-cita" id="" class="bg-[#E8E1E1] p-1 rounded-md focus:border-2 focus:border-[#659287] focus:outline-none">
+                <select  id="" name="tiempoLimite_service" class="bg-[#E8E1E1] p-1 rounded-md focus:border-2 focus:border-[#659287] focus:outline-none">
                     <option value="15 minutos">15 minutos</option>
                      <option value="30 minutos">30 minutos</option>
                       <option value="45 minutos">45 minutos</option>

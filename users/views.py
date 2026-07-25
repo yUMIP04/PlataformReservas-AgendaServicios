@@ -51,7 +51,8 @@ def inicio_sesion(request):
            usuario = Usuario.objects.get(correo=correo, clave=clave)
            request.session['usuario_rol'] = usuario.rol
            request.session['nombre_usuario'] = usuario.nombre
-
+           request.session['usuario_id'] = usuario.id
+           
            if usuario.rol == "Profesional":
                
                 print("🌟Iniciando sesion...")
