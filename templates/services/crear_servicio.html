@@ -4,36 +4,43 @@
 
 {% block content %}
 
-  <div class="create-service">
+<div class="w-full min-h-screen bg-[#E6F2DD] p-6">
 
-        <div class="formulario-servicio">
-            <form action="" method="post">
+<div class="create-service h-146 max-h-146 min-h-100 w-296 max-w-296 min-w-100 flex flex-row items-center justify-center gap-10 ">
 
-                <div class="titulo-form">
-                    <h1 class="form-titulo">Registra un nuevo Servicio</h1>
+        <div class="formulario-servicio bg-[#FAFBF5] p-10 rounded-md ">
+            <form action="" method="post" class="flex flex-col">
+
+                <div class="titulo-form mb-8">
+                    <h1 class="form-titulo font-[Roboto] text-2xl font-medium text-center text-[#659287]"><i class="bx bx-task text-3xl" /></i>Registra un nuevo Servicio</h1>
                 </div>
 
-                <label for="name-service">Nombre del servicio:</label>
-                <input type="text" id="input-name-service" class="input-name-service" required>
+                <div class="info-general flex flex-col font-[Roboto] text-left ">
+                <label for="name-service ">Nombre del servicio:</label>
+                <input type="text" id="input-name-service" class="input-name-service  bg-[#E8E1E1] p-1 rounded-md focus:border-2 focus:border-[#659287] focus:outline-none" required>
                 
                 <label for="descripcion-service">Descripcion del servicio:</label>
-                <input type="text" id="input-descripcion-service" class="input-descripcion-service" required>
+                <input type="text" id="input-descripcion-service" class="input-descripcion-service bg-[#E8E1E1] p-1 rounded-md focus:border-2 focus:border-[#659287] focus:outline-none" required>
+
+                </div>
 
                 
-                <div class="titulo-form">
-                    <h2 class="form-titulo2">Horario de Trabajo</h2>
+                <div class="titulo-form mb-3 mt-3">
+                    <h2 class="form-titulo2 font-[Roboto] text-base font-medium text-left text-[#659287]">Horario de Trabajo</h2>
+                    <hr class="text-[#E8E1E1]">
                 </div>
                 
+                <div class="info-explic flex flex-col">
                 <label for="hora-inicio">Hora de inicio:</label>
-                <input type="time" id="input-hora-inicio" class="input-hora-inicio" required>
+                <input type="time" id="input-hora-inicio" class="input-hora-inicio bg-[#E8E1E1] p-1 rounded-md focus:border-2 focus:border-[#659287] focus:outline-none" required>
 
                 
                 <label for="hora-fin">Hora de fin:</label>
-                <input type="time" id="input-hora-fin" class="input-hora-fin" required>
+                <input type="time" id="input-hora-fin" class="input-hora-fin bg-[#E8E1E1] p-1 rounded-md focus:border-2 focus:border-[#659287] focus:outline-none" required>
 
                 
                 <label for="time-cita">Tiempo limite de cita:</label>
-                <select name="time-cita" id="">
+                <select name="time-cita" id="" class="bg-[#E8E1E1] p-1 rounded-md focus:border-2 focus:border-[#659287] focus:outline-none">
                     <option value="15 minutos">15 minutos</option>
                      <option value="30 minutos">30 minutos</option>
                       <option value="45 minutos">45 minutos</option>
@@ -42,11 +49,41 @@
                        <option value="3 horas">3 hora(s)</option>
                        <option value="4 horas">4 hora(s)</option>
                 </select>
+                </div>
 
-                <div class="btn-crear">
-                    <input type="submit" value="Crear Servicio">
+                <div class="btn-crea mt-6 flex flex-row justify-center items-center bg-[#88bda4] p-3 text-white rounded-md hover:bg-[#659287] cursor-pointer hover:text-white transition">
+                    <input type="submit" value="Crear Servicio" class="cursor-pointer">
                 </div>
             </form>
         </div>
+
+        <!--🌟CARD DE MUESTRA-->
+
+        <div class="card-muestra bg-[#FAFBF5] w-100 h-110 w-max-100 h-max-110 w-min-50 h-min-50 rounded-md ">
+            <div class="titulo-card text-center mt-6 text-[Roboto] text-2xl font-semibold text-[#A19C9C] mb-8">
+                <h1>Titulo Card</h1>
+            </div>
+
+            <div class="descripcion-card ml-7 text-[#A19C9C] ">
+                Descripcion...
+            </div>
+
+            <div class="contenedor-imagen flex flex-row justify-center mt-2">
+            <div class="imagen-card w-90 bg-[#A19C9C] h-40 rounded-sm ">
+
+            </div>
+            </div>
+
+            <div class="informacion-explicita ml-7 mt-2 text-[Roboto] font-bold text-[#A19C9C] ">
+                <p>Horario:</p>
+                <p>Tiempo limite de cita:</p>
+            </div>
+
+            <div class="btn flex flex-row justify-center mt-6  ">
+                <input class="p-3 w-50 text-white rounded-md bg-[#88bda4] hover:bg-[#659287] cursor-pointer hover:text-white transition" type="submit" value="Solicitar Cita">
+            </div>
+        </div>
     </div>
+
+    <div>
 {% endblock  %}
