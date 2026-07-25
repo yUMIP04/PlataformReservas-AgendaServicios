@@ -1,5 +1,5 @@
 {% extends "users/base.html" %}
-
+{% load static %}
 {% block title  %}Crear servicios{% endblock  %}
 
 {% block content %}
@@ -41,7 +41,7 @@
 
                 
                 <label for="time-cita">Tiempo limite de cita:</label>
-                <select  id="" name="tiempoLimite_service" class="bg-[#E8E1E1] p-1 rounded-md focus:border-2 focus:border-[#659287] focus:outline-none">
+                <select  id="" name="tiempoLimite_service" class="tiempoLimite-select bg-[#E8E1E1] p-1 rounded-md focus:border-2 focus:border-[#659287] focus:outline-none">
                     <option value="15 minutos">15 minutos</option>
                      <option value="30 minutos">30 minutos</option>
                       <option value="45 minutos">45 minutos</option>
@@ -62,11 +62,11 @@
 
         <div class="card-muestra bg-[#FAFBF5] w-100 h-110 w-max-100 h-max-110 w-min-50 h-min-50 rounded-md ">
             <div class="titulo-card text-center mt-6 text-[Roboto] text-2xl font-semibold text-[#A19C9C] mb-8">
-                <h1>Titulo Card</h1>
+                <h1 class="Titulo-servicio">Titulo Card</h1>
             </div>
 
             <div class="descripcion-card ml-7 text-[#A19C9C] ">
-                Descripcion...
+                <p class="card-descripcion">Descripcion...</p>
             </div>
 
             <div class="contenedor-imagen flex flex-row justify-center mt-2">
@@ -76,8 +76,8 @@
             </div>
 
             <div class="informacion-explicita ml-7 mt-2 text-[Roboto] font-bold text-[#A19C9C] ">
-                <p>Horario:</p>
-                <p>Tiempo limite de cita:</p>
+                <p class="horaInicio-card">Horario:</p>
+                <p class="tiempoLimite-card">Tiempo limite de cita:</p>
             </div>
 
             <div class="btn flex flex-row justify-center mt-6  ">
@@ -87,4 +87,6 @@
     </div>
 
     <div>
+
+<script src="{% static "JS/IU/forms/card-preview.js" %}" ></script>
 {% endblock  %}
