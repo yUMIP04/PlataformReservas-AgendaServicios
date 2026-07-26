@@ -19,6 +19,24 @@ function Llenar_Card(nombre, descripcion, hora_inicio, hora_fin, tiempo_limite, 
 
     try{
 
+            /*🌟Imagen */
+
+    imagen.addEventListener("change", (e) =>{
+        e.preventDefault();
+        console.log("🔥 Evento change detectado en la imagen!");
+
+        if(imagen.files.length > 0){
+
+            console.log(imagen.files);
+
+            const imagen_traducida = URL.createObjectURL(imagen.files[0]);
+
+            console.log(imagen_traducida);
+            imagen_card.innerHTML =`<div class="imagen-card w-90 bg-[url(${imagen_traducida})] bg-top bg-cover bg-no-repeat h-40 rounded-sm "></div>`;
+        
+        }
+    })
+
         /*🌟input nombre */
         nombre.addEventListener("input", (e) =>{
         e.preventDefault();
@@ -79,18 +97,7 @@ function Llenar_Card(nombre, descripcion, hora_inicio, hora_fin, tiempo_limite, 
     }
 })
 
-    /*🌟Imagen */
 
-    imagen.addEventListener("change", (e) =>{
-        e.preventDefault();
-
-        if (imagen.files.length > 0){
-
-            const imagen_traducida = URL.createObjectURL(imagen.files[0]);
-
-            imagen_card.innerHTML =`<div class="imagen-card w-90 bg-[url(${imagen_traducida})] h-40 rounded-sm "></div>`;
-        } 
-    })
 
     }catch(e){
         console.log(`Hubo un error: ${e}`);
