@@ -7,14 +7,15 @@ const descript_service = document.querySelector(".input-descripcion-service");
 const hora_inicioService = document.querySelector(".input-hora-inicio");
 const hora_FinService = document.querySelector(".input-hora-fin");
 const tiempoLimite_Service = document.querySelector(".tiempoLimite-select");
+const imagen_Service = document.querySelector(".subir-imagen");
 
 const name_service_card = document.querySelector(".Titulo-servicio");
 const descripcion_service_card = document.querySelector(".card-descripcion");
 const Horario_card = document.querySelector(".horaInicio-card");
 const TiempoLimite_card = document.querySelector(".tiempoLimite-card");
+const imagen_card = document.querySelector(".imagen-card");
 
-
-function Llenar_Card(nombre, descripcion, hora_inicio, hora_fin, tiempo_limite){
+function Llenar_Card(nombre, descripcion, hora_inicio, hora_fin, tiempo_limite, imagen){
 
     try{
 
@@ -64,7 +65,6 @@ function Llenar_Card(nombre, descripcion, hora_inicio, hora_fin, tiempo_limite){
     })
 
     /*🌟TiempoLimite */
-
     
           tiempo_limite.addEventListener("input", (e) =>{
         e.preventDefault();
@@ -79,10 +79,23 @@ function Llenar_Card(nombre, descripcion, hora_inicio, hora_fin, tiempo_limite){
     }
 })
 
+    /*🌟Imagen */
+
+    imagen.addEventListener("change", (e) =>{
+        e.preventDefault();
+
+        if (imagen.files.length > 0){
+
+            const imagen_traducida = URL.createObjectURL(imagen.files[0]);
+
+            imagen_card.innerHTML =`<div class="imagen-card w-90 bg-[url(${imagen_traducida})] h-40 rounded-sm "></div>`;
+        } 
+    })
+
     }catch(e){
         console.log(`Hubo un error: ${e}`);
     }
 
 }
 
-Llenar_Card(name_service,descript_service, hora_inicioService, hora_FinService, tiempoLimite_Service);
+Llenar_Card(name_service,descript_service, hora_inicioService, hora_FinService, tiempoLimite_Service, imagen_Service);
