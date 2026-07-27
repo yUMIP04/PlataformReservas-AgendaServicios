@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Base{% endblock %}</title>
+
+    <!-- 🌟 TAILWINDCSS -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- 🌟 ICONOS BOXICONS -->
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/filled/boxicons-filled.min.css" rel="stylesheet">
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/brands/boxicons-brands.min.css" rel="stylesheet">
+
+       <!--🌟FONTS-->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Akt:wght@100..900&family=Bebas+Neue&family=Bungee+Shade&family=Geist+Pixel&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+  
+    <header class="p-4 bg-white shadow-sm">
+        <ul class="flex flex-row justify-end items-center gap-20">
+            <li><a href="{% url "catalogo" %}" class="" >Catalogo</a></li>
+            <li><a href="{% url "mis reservas" %}" class="" >Mis Reservas</a></li>
+            
+          
+
+            <li class="flex items-center gap-2 cursor-pointer">
+                
+                    <i class="bx bx-user-circle text-xl"></i> 
+                    {{ request.session.nombre_usuario }} 
+            <div class="btns-abrir-cerrar">
+                <button class="btn-abrir cursor-pointer"><i class="bx bx-caret-big-left" /> </i></button>
+            </div>
+                </li>
+        </ul>
+    </header>
+  <!--Opciones-->
+
+    <div class="p-1 rounded-md opciones bg-gray-300 hidden left-350 top-9 hover:bg-red-600 hover:text-white duration-300 ease-in-out">
+        <ul>
+            <li><a href="{% url "cerrar_sesion" %}">Cerrar Sesion</a></li>
+            <hr>
+           
+        </ul>
+    </div>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+  
+</body>
+
+<script src="{% static 'JS/IU/components/iuBaseProfesional.js' %}"></script>
+</html>

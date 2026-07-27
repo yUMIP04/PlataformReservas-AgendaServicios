@@ -25,6 +25,7 @@
     <header class="p-4 bg-white shadow-sm">
         <ul class="flex flex-row justify-end items-center gap-20">
             <li><a href="{% url "ListaServicios" %}" class="" >Ver Mis Servicios</a></li>
+            <li><a href="{% url "CrearServicios" %}" class="" >Crear Nuevo Servicio</a></li>
           
 
             <li class="flex items-center gap-2 cursor-pointer">
@@ -55,5 +56,5 @@
   
 </body>
 
-<script src="{% static 'JS/IU/iuBase.js' %}"></script>
+<script src="{% static 'JS/IU/components/iuBaseProfesional.js' %}"></script>
 </html>
