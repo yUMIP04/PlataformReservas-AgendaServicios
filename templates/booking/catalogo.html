@@ -1,2 +1,75 @@
 {% extends "users/base_cliente.html" %}
-{% block title  %}Catalogo{% endblock  %}
+{% load static %}
+
+{% block title %}Catálogo{% endblock %}
+
+{% block content %}
+<div class="w-full min-h-screen bg-[#E6F2DD] p-6">
+
+    <div class="max-w-6xl mx-auto flex flex-col gap-6">
+
+        <!--🌟 1. Mensaje de Bienvenida (Alineado con el contenido de abajo) -->
+        <div class="bienvenida-descrip flex flex-row justify-center items-center">
+            <div class="presentacion bg-white p-6 rounded-lg shadow-lg w-full transform transition-transform duration-300 hover:-translate-y-2">
+                <div class="titulo mb-2 font-[Roboto] text-2xl font-semibold text-[#659287]">
+                    <h1>Catálogo</h1>
+                </div>
+                <div class="description">
+                    <p>Bienvenido {{ request.session.nombre_usuario }}, encuentre diferentes servicios que le pueden brindar ayuda de diferentes maneras. <strong class="text-[#659287]">Revise, agende y listo.</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <!--🌟 2. CATÁLOGO Y FILTROS -->
+        <div class="CATALOGO grid grid-cols-1 md:grid-cols-3 gap-6">
+
+            <!--🌟 Buscador / Filtros del Catálogo -->
+            <div class="sec-Buscador col-span-1">
+                <!-- Se agregó pb-8 para evitar que el botón 'Buscar' choque con el borde -->
+                <div class="buscador bg-white p-6 pb-8 rounded-lg shadow-sm">
+                    <form action="" method="get" class="flex flex-col gap-2">
+                        <div class="titulo-form mb-2">
+                            <h1 class="font-[Roboto] text-xl font-extrabold text-[#659287]">Filtros</h1>
+                        </div>
+
+                        <label for="nombre-servicio" class="text-sm font-medium">Nombre Servicio:</label>
+                        <input type="text" placeholder="Nombre servicio" id="nombre-servicio" name="nombre_servicio" class="w-full bg-[#CFCACA] p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-[#659287]">
+
+                        <label for="horario-inicial" class="text-sm font-medium">Horario Inicial:</label>
+                        <input type="time" id="horario-inicial" name="horario_inicial" class="w-full bg-[#CFCACA] p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-[#659287]">
+
+                        <label for="horario-terminar" class="text-sm font-medium">Horario a Terminar:</label>
+                        <input type="time" id="horario-terminar" name="horario_terminar" class="w-full bg-[#CFCACA] p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-[#659287]">
+
+                        <label for="tiempo-consulta" class="text-sm font-medium">Tiempo de consulta:</label>
+                        <select name="tiempo_consulta" id="tiempo-consulta" class="w-full bg-[#CFCACA] p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-[#659287]">
+                            <option value="15 minutos">15 minutos</option>
+                            <option value="30 minutos">30 minutos</option>
+                            <option value="45 minutos">45 minutos</option>
+                            <option value="1 hora">1 hora</option>
+                            <option value="2 horas">2 hora(s)</option>
+                            <option value="3 horas">3 hora(s)</option>
+                            <option value="4 horas">4 hora(s)</option>
+                        </select>
+
+                        <div class="btn-buscar flex flex-row justify-center mt-4">
+                            <input type="submit" value="Buscar" class="bg-[#88BDA4] w-full rounded-md p-2 text-white font-medium transition cursor-pointer hover:bg-[#659287]">
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!--🌟 3. Muestra del Catálogo (Con Grid de Tarjetas) -->
+            <div class="catalogo col-span-2">
+                <div class="servicios bg-white p-6 rounded-lg min-h-[350px] shadow-sm grid grid-cols-1 sm:grid-cols-2 gap-4 auto-rows-max">
+                   
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
