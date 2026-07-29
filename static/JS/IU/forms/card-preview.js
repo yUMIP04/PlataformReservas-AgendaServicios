@@ -15,7 +15,9 @@ const Horario_card = document.querySelector(".horaInicio-card");
 const TiempoLimite_card = document.querySelector(".tiempoLimite-card");
 const imagen_card = document.querySelector(".imagen-card");
 
-function Llenar_Card(nombre, descripcion, hora_inicio, hora_fin, tiempo_limite, imagen){
+function Llenar_Card(nombre, descripcion, hora_inicio, hora_fin, tiempo_limite, imagen, callback){
+
+    callback();
 
     try{
 
