@@ -9,7 +9,7 @@
 <div class="create-service h-146 max-h-146 min-h-100 w-296 max-w-296 min-w-100 flex flex-row items-center justify-center gap-10 ">
 
         <div class="formulario-servicio bg-[#FAFBF5] p-10 rounded-md ">
-            <form action="/crearServicios/" method="post" class="flex flex-col">
+            <form action="/crearServicios/" method="post" class="flex flex-col CrearServicio">
                 {% csrf_token %}
 
                 <div class="titulo-form mb-8">
@@ -92,5 +92,5 @@
 
     <div>
 
-<script src="{% static "JS/IU/forms/card-preview.js" %}" ></script>
+<script type="module" src="{% static "JS/IU/forms/card-preview.js" %}" ></script>
 {% endblock  %}

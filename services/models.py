@@ -10,3 +10,4 @@ class Catalogo(models.Model):
     nombre_servicio =models.CharField(max_length=30)
     descripcion =models.TextField()
     tiempo_limite_cita =models.CharField(max_length=30)
+    fondo_img = models.ImageField(upload_to='servicios/', null=True, blank=True)

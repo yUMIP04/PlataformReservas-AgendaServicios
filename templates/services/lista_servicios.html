@@ -1,5 +1,7 @@
 {% extends "users/base_profesional.html" %}
 
+{% load static %}
+
 {% block title %}Ver Servicios{% endblock %}
 
 
@@ -14,7 +16,47 @@
     <button class="bg-[#88BDA4] p-3 pl-5 pr-5 rounded-md transition duration-150 ease-in-out hover:bg-[#659287]"> <a href="{% url "CrearServicios" %}"><i class="bx bx-plus" /></i></a> </button>
 </div>
 
+<!--🌟Listado de Servicios-->
+<div class="Servicios">
+
+    {% if servicios  %}
+    
+    {% for servicio in servicios %}
+        <!--🌟CARD DE MUESTRA-->
+
+        <div class="card-muestra bg-[#FAFBF5] w-100 h-110 w-max-100 h-max-110 w-min-50 h-min-50 rounded-md ">
+            <div class="titulo-card text-center mt-6 text-[Roboto] text-2xl font-semibold text-[#A19C9C] mb-8">
+                <h1 class="Titulo-servicio">{{servicio.nombre_servicio}}</h1>
+            </div>
+
+            <div class="descripcion-card ml-7 text-[#A19C9C] ">
+                <p class="card-descripcion">{{servicio.descripcion}}</p>
+            </div>
+
+            <div class="contenedor-imagen flex flex-row justify-center mt-2">
+            <div class="imagen-card w-90 bg-[#A19C9C] h-40 rounded-sm background-image:url('{{servicio.fondo_img.url}}') ">
+
+            </div>
+            </div>
+
+            <div class="informacion-explicita ml-7 mt-2 text-[Roboto] font-bold text-[#A19C9C] ">
+                <p class="horaInicio-card">Horario:{{servicio.hora_inicio_trabajo}}- {{servicio.hora_fin_trabajo}}</p>
+                <p class="tiempoLimite-card">Tiempo limite de cita:{{servicio.tiempo_limite_cita}}</p>
+            </div>
+
+            <div class="btn flex flex-row justify-center mt-6">
+                <input class="p-3 w-50 text-white rounded-md bg-[#88bda4] hover:bg-[#659287] cursor-pointer hover:text-white transition" type="submit" value="Solicitar Cita">
+            </div>
+        </div>
+    {% endfor %}
+    {% else %}
+
+    <p>No hay servicios</p>
+
+    {% endif %}
 </div>
 
+</div>
 
+<script type="module" src="{% static "JS/IU/components/card-preview.js" %}"></script>
 {% endblock  %}

@@ -1,7 +1,9 @@
 /*Card-preview.js */
+import create_Card from "../components/card-preview.js";
 
 console.log("Aqui card-preview");
 
+const Form_Crear = document.querySelector(".CrearServicio");
 const name_service = document.querySelector(".input-name-service");
 const descript_service = document.querySelector(".input-descripcion-service");
 const hora_inicioService = document.querySelector(".input-hora-inicio");
@@ -15,9 +17,7 @@ const Horario_card = document.querySelector(".horaInicio-card");
 const TiempoLimite_card = document.querySelector(".tiempoLimite-card");
 const imagen_card = document.querySelector(".imagen-card");
 
-function Llenar_Card(nombre, descripcion, hora_inicio, hora_fin, tiempo_limite, imagen, callback){
-
-    callback();
+function Llenar_Card(nombre, descripcion, hora_inicio, hora_fin, tiempo_limite, imagen){
 
     try{
 
@@ -108,3 +108,38 @@ function Llenar_Card(nombre, descripcion, hora_inicio, hora_fin, tiempo_limite, 
 }
 
 Llenar_Card(name_service,descript_service, hora_inicioService, hora_FinService, tiempoLimite_Service, imagen_Service);
+
+/*🌟Funcion crear card */
+
+function Crear_Card(){
+
+    try{
+
+    Form_Crear.addEventListener("submit", (e) =>{
+        e.preventDefault();
+
+         const data = new FormData(Form_Crear);
+         console.log(data);
+
+         const name_service = data.get('name_service');
+         const descript_service = data.get('descrip_service');
+         const subir_imagen = data.get('subir-imagen');
+         const HoraInicio_service = data.get('HoraInicio_service');
+         const HoraFin_service = data.get('HoraFin_service');
+         const tiempoLimite_service = data.get('tiempoLimite_service');
+
+         if (name_service && descript_service && subir_imagen && HoraInicio_service && HoraFin_service && tiempoLimite_Service){
+
+            create_Card(name_service, descript_service, subir_imagen, HoraInicio_service, HoraFin_service, tiempoLimite_Service);
+            console.log("Se creo una card en diferentes lados");
+            window.location.href='/templates/services/lista_servicios.html';
+         }
+    })
+
+    }catch(e){
+        
+        console.error(`❌Hubo un error al crear la card en distintos lugares: ${e}`);
+    }
+}
+
+Crear_Card();

@@ -1,10 +1,15 @@
 /*🌟CARD CREADA AL CREAR UN NUEVO SERVICIO */
+const div_listadoServicios = document.querySelector(".Servicios");
+const Servicios_Catalogo = document.querySelector(".servicios");
 
-function create_Card(titulo, descripcion, img, hora_inicio, hora_final, tiempo_limite){
+console.log("Si funciona card-preview de components");
+
+export default function create_Card(titulo, descripcion, img, hora_inicio, hora_final, tiempo_limite){
 
     try{
 
         if(titulo,descripcion,img,hora_inicio,hora_final,tiempo_limite){     
+
     /*🌟Card General */
     const card = document.createElement("div");
     card.classList.add("card-muestra bg-[#FAFBF5] w-100 h-110 w-max-100 h-max-110 w-min-50 h-min-50 rounded-md ");
@@ -62,6 +67,9 @@ function create_Card(titulo, descripcion, img, hora_inicio, hora_final, tiempo_l
     card.appendChild(div_img);
     card.appendChild(div_informacion);
     card.appendChild(div_btn);
+
+    div_listadoServicios.appendChild(card);
+    Servicios_Catalogo.appendChild(card);
 
     console.log("Se creo exitosamento la card en otros lugares");
     } else{
