@@ -26,24 +26,24 @@ def crear_servicios(request):
 
     elif request.method == 'POST':
 
-        try:
-            name_service =request.POST.get('name_service')
-            descrip_service =request.POST.get('descrip_service')
-            horaInicio_service =request.POST.get('horaInicio_service')
-            horaFin_service =request.POST.get('horaFin_service')
-            tiempoLimite_cita =request.POST.get('tiempoLimite_service')
-            subir_img = request.FILES.get('subir-imagen')
-            usuario_id = request.session.get('usuario_id')
-
-            Catalogo.objects.create(hora_inicio_trabajo=horaInicio_service, hora_fin_trabajo=horaFin_service, id_profesional_id=usuario_id, nombre_servicio=name_service, descripcion=descrip_service, tiempo_limite_cita=tiempoLimite_cita, fondo_img=subir_img)
-
-            print("🥳Se guardo el servicio correctamente.")
-            return redirect('ListaServicios')
+        print("DATOS POST:", request.POST)
+        print("ARCHIVOS FILES:", request.FILES)
+        print("USUARIO EN SESIÓN:", request.session.get('usuario_id'))
         
-        except Exception as e:
+        name_service =request.POST.get('name_service')
+        descrip_service =request.POST.get('descrip_service')
+        horaInicio_service =request.POST.get('horaInicio_service')
+        horaFin_service =request.POST.get('horaFin_service')
+        tiempoLimite_cita =request.POST.get('tiempoLimite_service')
+        subir_img = request.FILES.get('subir-imagen')
+        usuario_id = request.session.get('usuario_id')
 
-            print(f"❌Hubo un error al guardar el servicio en la BD : {e}.")
+        Catalogo.objects.create(hora_inicio_trabajo=horaInicio_service, hora_fin_trabajo=horaFin_service, id_profesional_id=usuario_id, nombre_servicio=name_service, descripcion=descrip_service, tiempo_limite_cita=tiempoLimite_cita, fondo_img=subir_img)
 
+        print("🥳Se guardo el servicio correctamente.")
+        return redirect('ListaServicios')
+        
+        
     return render(request, "services/crear_servicio.html")
 
 #🌟EDITAR DE SERVICIOS

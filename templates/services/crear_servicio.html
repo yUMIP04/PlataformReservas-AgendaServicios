@@ -1,96 +1,92 @@
 {% extends "users/base_profesional.html" %}
 {% load static %}
-{% block title  %}Crear servicios{% endblock  %}
+{% block title %}Crear servicios{% endblock %}
 
 {% block content %}
 
 <div class="w-full min-h-screen bg-[#E6F2DD] p-6">
 
-<div class="create-service h-146 max-h-146 min-h-100 w-296 max-w-296 min-w-100 flex flex-row items-center justify-center gap-10 ">
+    <div class="create-service h-146 max-h-146 min-h-100 w-296 max-w-296 min-w-100 flex flex-row items-center justify-center gap-10">
 
-        <div class="formulario-servicio bg-[#FAFBF5] p-10 rounded-md ">
-            <form action="/crearServicios/" method="post" class="flex flex-col CrearServicio">
+        <div class="formulario-servicio bg-[#FAFBF5] p-10 rounded-md">
+            <form action="{% url 'CrearServicios' %}" method="post" class="flex flex-col CrearServicio" enctype="multipart/form-data">
                 {% csrf_token %}
 
                 <div class="titulo-form mb-8">
-                    <h1 class="form-titulo font-[Roboto] text-2xl font-medium text-center text-[#659287]"><i class="bx bx-task text-3xl" /></i>Registra un nuevo Servicio</h1>
+                    <h1 class="form-titulo font-[Roboto] text-2xl font-medium text-center text-[#659287]">
+                        <i class="bx bx-task text-3xl"></i> Registra un nuevo Servicio
+                    </h1>
                 </div>
 
-                <div class="info-general flex flex-col font-[Roboto] text-left ">
-                
-                    <label for="name-service ">Nombre del servicio:</label>
-                <input type="text" name="name_service" id="input-name-service" class="input-name-service  bg-[#E8E1E1] p-1 rounded-md focus:border-2 focus:border-[#659287] focus:outline-none" required>
-                
-                <label for="descripcion-service">Descripcion del servicio:</label>
-                <input type="text" name="descrip_service" id="input-descripcion-service" class="input-descripcion-service bg-[#E8E1E1] p-1 rounded-md focus:border-2 focus:border-[#659287] focus:outline-none" required>
+                <div class="info-general flex flex-col font-[Roboto] text-left">
+                    <label for="input-name-service">Nombre del servicio:</label>
+                    <input type="text" name="name_service" id="input-name-service" class="input-name-service bg-[#E8E1E1] p-1 rounded-md focus:border-2 focus:border-[#659287] focus:outline-none" required>
 
-                 <label for="imagen">Subir un archivo:</label>
-                <input type="file" name="subir-imagen" id="subir-imagen" class="subir-imagen border-2 border-solid rounded-md text-center cursor-pointer bg-[#D4CFCD] hover:bg-[#D4CFCD]">
-                
+                    <label for="input-descripcion-service">Descripcion del servicio:</label>
+                    <input type="text" name="descrip_service" id="input-descripcion-service" class="input-descripcion-service bg-[#E8E1E1] p-1 rounded-md focus:border-2 focus:border-[#659287] focus:outline-none" required>
+
+                    <label for="subir-imagen">Subir un archivo:</label>
+                    <input type="file" name="subir-imagen" id="subir-imagen" class="subir-imagen border-2 border-solid rounded-md text-center cursor-pointer bg-[#D4CFCD] hover:bg-[#D4CFCD]">
                 </div>
 
-                
                 <div class="titulo-form mb-3 mt-3">
                     <h2 class="form-titulo2 font-[Roboto] text-base font-medium text-left text-[#659287]">Horario de Trabajo</h2>
                     <hr class="text-[#E8E1E1]">
                 </div>
-                
+
                 <div class="info-explic flex flex-col">
-                <label for="hora-inicio">Hora de inicio:</label>
-                <input type="time" name="horaInicio_service" id="input-hora-inicio" class="input-hora-inicio bg-[#E8E1E1] p-1 rounded-md focus:border-2 focus:border-[#659287] focus:outline-none" required>
+                    <label for="input-hora-inicio">Hora de inicio:</label>
+                    <input type="time" name="horaInicio_service" id="input-hora-inicio" class="input-hora-inicio bg-[#E8E1E1] p-1 rounded-md focus:border-2 focus:border-[#659287] focus:outline-none" required>
 
-                
-                <label for="hora-fin">Hora de fin:</label>
-                <input type="time" name="horaFin_service" id="input-hora-fin" class="input-hora-fin bg-[#E8E1E1] p-1 rounded-md focus:border-2 focus:border-[#659287] focus:outline-none" required>
+                    <label for="input-hora-fin">Hora de fin:</label>
+                    <input type="time" name="horaFin_service" id="input-hora-fin" class="input-hora-fin bg-[#E8E1E1] p-1 rounded-md focus:border-2 focus:border-[#659287] focus:outline-none" required>
 
-                
-                <label for="time-cita">Tiempo limite de cita:</label>
-                <select  id="" name="tiempoLimite_service" class="tiempoLimite-select bg-[#E8E1E1] p-1 rounded-md focus:border-2 focus:border-[#659287] focus:outline-none">
-                    <option value="15 minutos">15 minutos</option>
-                     <option value="30 minutos">30 minutos</option>
-                      <option value="45 minutos">45 minutos</option>
-                       <option value="1 hora">1 hora</option>
-                       <option value="2 horas">2 hora(s)</option>
-                       <option value="3 horas">3 hora(s)</option>
-                       <option value="4 horas">4 hora(s)</option>
-                </select>
+                    <label for="time-cita">Tiempo limite de cita:</label>
+                    <select name="tiempoLimite_service" class="tiempoLimite-select bg-[#E8E1E1] p-1 rounded-md focus:border-2 focus:border-[#659287] focus:outline-none">
+                        <option value="15 minutos">15 minutos</option>
+                        <option value="30 minutos">30 minutos</option>
+                        <option value="45 minutos">45 minutos</option>
+                        <option value="1 hora">1 hora</option>
+                        <option value="2 horas">2 hora(s)</option>
+                        <option value="3 horas">3 hora(s)</option>
+                        <option value="4 horas">4 hora(s)</option>
+                    </select>
                 </div>
 
-                <div class="btn-crea mt-6 flex flex-row justify-center items-center bg-[#88bda4] p-3 text-white rounded-md hover:bg-[#659287] cursor-pointer hover:text-white transition">
-                    <input type="submit" value="Crear Servicio" class="cursor-pointer">
-                </div>
+                
+                    <button type="submit" class="w-full mt-6 flex flex-row justify-center items-center bg-[#88bda4] p-3 text-white rounded-md hover:bg-[#659287] cursor-pointer transition font-medium">
+    Crear Servicio
+</button>
             </form>
         </div>
 
-        <!--🌟CARD DE MUESTRA-->
-
-        <div class="card-muestra bg-[#FAFBF5] w-100 h-110 w-max-100 h-max-110 w-min-50 h-min-50 rounded-md ">
+        <!--🌟CARD DE MUESTRA (PREVIEW)-->
+        <div class="card-muestra bg-[#FAFBF5] w-100 h-110 rounded-md">
             <div class="titulo-card text-center mt-6 text-[Roboto] text-2xl font-semibold text-[#A19C9C] mb-8">
                 <h1 class="Titulo-servicio">Titulo Card</h1>
             </div>
 
-            <div class="descripcion-card ml-7 text-[#A19C9C] ">
+            <div class="descripcion-card ml-7 text-[#A19C9C]">
                 <p class="card-descripcion">Descripcion...</p>
             </div>
 
             <div class="contenedor-imagen flex flex-row justify-center mt-2">
-            <div class="imagen-card w-90 bg-[#A19C9C] h-40 rounded-sm ">
-
-            </div>
+                <div class="imagen-card w-90 bg-[#A19C9C] h-40 rounded-sm"></div>
             </div>
 
-            <div class="informacion-explicita ml-7 mt-2 text-[Roboto] font-bold text-[#A19C9C] ">
+            <div class="informacion-explicita ml-7 mt-2 text-[Roboto] font-bold text-[#A19C9C]">
                 <p class="horaInicio-card">Horario:</p>
                 <p class="tiempoLimite-card">Tiempo limite de cita:</p>
             </div>
 
-            <div class="btn flex flex-row justify-center mt-6  ">
-                <input class="p-3 w-50 text-white rounded-md bg-[#88bda4] hover:bg-[#659287] cursor-pointer hover:text-white transition" type="submit" value="Solicitar Cita">
+            <div class="btn flex flex-row justify-center mt-6">
+                <input class="p-3 w-50 text-white rounded-md bg-[#88bda4] hover:bg-[#659287] cursor-pointer hover:text-white transition" type="button" value="Solicitar Cita">
             </div>
         </div>
+
     </div>
 
-    <div>
+</div>
 
-<script type="module" src="{% static "JS/IU/forms/card-preview.js" %}" ></script>
-{% endblock  %}
+<script type="module" src="{% static 'JS/IU/forms/card2-preview.js' %}"></script>
+{% endblock %}

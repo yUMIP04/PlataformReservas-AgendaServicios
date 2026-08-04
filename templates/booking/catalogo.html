@@ -6,11 +6,11 @@
 {% block content %}
 <div class="w-full min-h-screen bg-[#E6F2DD] p-6">
 
-    <div class="max-w-6xl mx-auto flex flex-col gap-6">
+    <div class="max-w-7xl mx-auto flex flex-col gap-6">
 
         <!--🌟 1. Mensaje de Bienvenida -->
         <div class="bienvenida-descrip flex flex-row justify-center items-center">
-            <div class="presentacion bg-white p-6 rounded-lg shadow-lg w-full transform transition-transform duration-300 hover:-translate-y-2">
+            <div class="presentacion bg-white p-6 rounded-lg shadow-lg w-full transform transition-transform duration-300 hover:-translate-y-1">
                 <div class="titulo mb-2 font-[Roboto] text-2xl font-semibold text-[#659287]">
                     <h1>Catálogo</h1>
                 </div>
@@ -21,38 +21,46 @@
         </div>
 
         <!--🌟 2. CATÁLOGO Y FILTROS -->
-        <div class="CATALOGO grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="CATALOGO grid grid-cols-1 lg:grid-cols-4 gap-6 items-start">
 
             <!--🌟 Buscador / Filtros del Catálogo -->
-            <div class="sec-Buscador col-span-1">
-              
-                <div class="buscador bg-white p-6 pb-8 rounded-lg shadow-sm">
-                    <form action="" method="get" class="flex flex-col gap-2">
-                        <div class="titulo-form mb-2">
+            <div class="sec-Buscador col-span-1 sticky top-6">
+                <div class="buscador bg-white p-6 rounded-lg shadow-sm">
+                    <form action="" method="get" class="flex flex-col gap-3">
+                        <div class="titulo-form mb-1">
                             <h1 class="font-[Roboto] text-xl font-extrabold text-[#659287]">Filtros</h1>
                         </div>
 
-                        <label for="nombre-servicio" class="text-sm font-medium">Nombre Servicio:</label>
-                        <input type="text" placeholder="Nombre servicio" id="nombre-servicio" name="nombre_servicio" class="w-full bg-[#CFCACA] p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-[#659287]">
+                        <div>
+                            <label for="nombre-servicio" class="text-sm font-medium text-gray-700 block mb-1">Nombre Servicio:</label>
+                            <input type="text" placeholder="Nombre servicio" id="nombre-servicio" name="nombre_servicio" class="w-full bg-[#E8E1E1] p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-[#659287] text-sm">
+                        </div>
 
-                        <label for="horario-inicial" class="text-sm font-medium">Horario Inicial:</label>
-                        <input type="time" id="horario-inicial" name="horario_inicial" class="w-full bg-[#CFCACA] p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-[#659287]">
+                        <div>
+                            <label for="horario-inicial" class="text-sm font-medium text-gray-700 block mb-1">Horario Inicial:</label>
+                            <input type="time" id="horario-inicial" name="horario_inicial" class="w-full bg-[#E8E1E1] p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-[#659287] text-sm">
+                        </div>
 
-                        <label for="horario-terminar" class="text-sm font-medium">Horario a Terminar:</label>
-                        <input type="time" id="horario-terminar" name="horario_terminar" class="w-full bg-[#CFCACA] p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-[#659287]">
+                        <div>
+                            <label for="horario-terminar" class="text-sm font-medium text-gray-700 block mb-1">Horario a Terminar:</label>
+                            <input type="time" id="horario-terminar" name="horario_terminar" class="w-full bg-[#E8E1E1] p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-[#659287] text-sm">
+                        </div>
 
-                        <label for="tiempo-consulta" class="text-sm font-medium">Tiempo de consulta:</label>
-                        <select name="tiempo_consulta" id="tiempo-consulta" class="w-full bg-[#CFCACA] p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-[#659287]">
-                            <option value="15 minutos">15 minutos</option>
-                            <option value="30 minutos">30 minutos</option>
-                            <option value="45 minutos">45 minutos</option>
-                            <option value="1 hora">1 hora</option>
-                            <option value="2 horas">2 hora(s)</option>
-                            <option value="3 horas">3 hora(s)</option>
-                            <option value="4 horas">4 hora(s)</option>
-                        </select>
+                        <div>
+                            <label for="tiempo-consulta" class="text-sm font-medium text-gray-700 block mb-1">Tiempo de consulta:</label>
+                            <select name="tiempo_consulta" id="tiempo-consulta" class="w-full bg-[#E8E1E1] p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-[#659287] text-sm">
+                                <option value="">Todos los tiempos</option>
+                                <option value="15 minutos">15 minutos</option>
+                                <option value="30 minutos">30 minutos</option>
+                                <option value="45 minutos">45 minutos</option>
+                                <option value="1 hora">1 hora</option>
+                                <option value="2 horas">2 hora(s)</option>
+                                <option value="3 horas">3 hora(s)</option>
+                                <option value="4 horas">4 hora(s)</option>
+                            </select>
+                        </div>
 
-                        <div class="btn-buscar flex flex-row justify-center mt-4">
+                        <div class="btn-buscar flex flex-row justify-center mt-2">
                             <input type="submit" value="Buscar" class="bg-[#88BDA4] w-full rounded-md p-2 text-white font-medium transition cursor-pointer hover:bg-[#659287]">
                         </div>
                     </form>
@@ -60,9 +68,57 @@
             </div>
 
             <!--🌟 3. Muestra del Catálogo -->
-            <div class="catalogo col-span-2">
-                <div class="servicios bg-white p-6 rounded-lg min-h-[350px] shadow-sm grid grid-cols-1 sm:grid-cols-2 gap-4 auto-rows-max">
-                   
+            <div class="catalogo col-span-1 lg:col-span-3">
+                <div class="servicios bg-white p-6 rounded-lg min-h-[350px] shadow-sm">
+
+                    <div class="Servicios grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                        {% if servicios %}
+                            {% for servicio in servicios %}
+                                <!--🌟CARD DE MUESTRA-->
+                                <div class="card-muestra bg-[#FAFBF5] w-full h-auto p-4 rounded-md shadow-sm border border-gray-100 flex flex-col justify-between">
+                                    
+                                    <div>
+                                        <div class="titulo-card text-center mt-2 text-[Roboto] text-xl font-semibold text-[#659287] mb-3">
+                                            <h1 class="Titulo-servicio">{{ servicio.nombre_servicio }}</h1>
+                                        </div>
+
+                                        <div class="descripcion-card px-2 text-gray-600 text-sm mb-4">
+                                            <p class="card-descripcion">{{ servicio.descripcion }}</p>
+                                        </div>
+
+                                        <div class="contenedor-imagen flex flex-row justify-center mb-4">
+                                            {% if servicio.fondo_img %}
+                                                <div class="imagen-card w-full bg-cover bg-top bg-no-repeat h-36 rounded-sm shadow-inner" 
+                                                     style="background-image: url('{{ servicio.fondo_img.url }}');">
+                                                </div>
+                                            {% else %}
+                                                <div class="imagen-card w-full bg-[#A19C9C] h-36 rounded-sm flex items-center justify-center text-white text-sm">
+                                                    Sin imagen
+                                                </div>
+                                            {% endif %}
+                                        </div>
+
+                                        <div class="informacion-explicita px-2 text-[Roboto] text-xs font-bold text-gray-600 space-y-1">
+                                            <p class="horaInicio-card">Horario: {{ servicio.hora_inicio_trabajo }} - {{ servicio.hora_fin_trabajo }}</p>
+                                            <p class="tiempoLimite-card">Tiempo limite de cita: {{ servicio.tiempo_limite_cita }}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="btn flex flex-row justify-center mt-5">
+                                        <button type="button" class="p-2.5 w-full text-white text-sm rounded-md bg-[#88bda4] hover:bg-[#659287] cursor-pointer transition font-medium">
+                                            Solicitar Cita
+                                        </button>
+                                    </div>
+
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="col-span-full flex flex-col items-center justify-center py-12 text-gray-500">
+                                <i class="bx bx-search-alt text-5xl mb-2 text-[#659287]"></i>
+                                <p class="text-lg">No hay servicios disponibles en el catálogo.</p>
+                            </div>
+                        {% endif %}
+                    </div>
 
                 </div>
             </div>

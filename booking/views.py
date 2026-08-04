@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Catalogo
+from services.models import Catalogo
 
 # Create your views here.
 
@@ -7,12 +7,17 @@ from .models import Catalogo
 
 #🌟MUESTRA DE CATALOGOS PRINCIPAL
 
-def catalogo(request):
 
-    if request.method == 'GET':
-        return render(request, 'booking/catalogo.html')
+def catalogo(request):
+    try:
         
-    return render(request, 'booking/catalogo.html')
+        resultados = Catalogo.objects.all()
+        return render(request, 'booking/catalogo.html', {'servicios': resultados})
+        
+    except Exception as e:
+        print(f"❌ Hubo un error al mostrar la información en el Catálogo: {e}")
+        
+        return render(request, 'booking/catalogo.html', {'servicios': []})
 
 
 #🌟MUESTRA DE MIS RESERVAS
