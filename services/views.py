@@ -52,6 +52,27 @@ def editar_servicios(request, id_service):
 
         return render(request, "services/editar_servicio.html", {'servicio': servicio})
 
-    
+    elif request.method == 'POST':
+
+         name_service =request.POST.get('name_service')
+         descrip_service =request.POST.get('descrip_service')
+         horaInicio_service =request.POST.get('horaInicio_service')
+         horaFin_service =request.POST.get('horaFin_service')
+         tiempoLimite_cita =request.POST.get('tiempoLimite_service')
+         subir_img = request.FILES.get('subir-imagen')
+
+         actualizacion = Catalogo.objects.get(id = id_service)
+
+         actualizacion.nombre_servicio = name_service
+         actualizacion.descripcion = descrip_service
+         actualizacion.hora_inicio_trabajo = horaInicio_service
+         actualizacion.hora_fin_trabajo = horaFin_service
+         actualizacion.tiempo_limite_cita = tiempoLimite_cita
+
+         if subir_img :
+                      actualizacion.fondo_img = subir_img
+
+         actualizacion.save()
+         return redirect('ListaServicios')
 
     return render(request, "services/editar_servicio.html")
