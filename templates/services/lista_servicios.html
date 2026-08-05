@@ -16,7 +16,7 @@
         </button>
     </div>
 
-    <!--🌟Listado de Servicios (GRID DE 3 COLUMNAS)-->
+    <!-- 🌟Listado de Servicios -->
     <div class="Servicios grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
 
         {% if servicios %}
@@ -28,6 +28,7 @@
                     <div>
                         <div class="titulo-card text-center mt-2 text-[Roboto] text-2xl font-semibold text-[#659287] mb-4">
                             <h1 class="Titulo-servicio">{{ servicio.nombre_servicio }}</h1>
+                            <input type="hidden" name="" value="{{ servicio.id }}" readonly>
                         </div>
 
                         <div class="descripcion-card px-4 text-[#A19C9C] mb-4">
@@ -53,7 +54,7 @@
                     </div>
 
                     <div class="btn flex flex-row justify-center mt-6">
-                        <input class="p-3 w-11/12 text-white rounded-md bg-[#88bda4] hover:bg-[#659287] cursor-pointer transition font-medium" type="button" value="Solicitar Cita">
+                        <a href="{% url "EditarServicios" servicio.id %}" class="p-3 w-11/12 text-white rounded-md bg-[#88bda4] hover:bg-[#659287] cursor-pointer transition font-medium text-center">Editar</a>
                     </div>
 
                 </div>

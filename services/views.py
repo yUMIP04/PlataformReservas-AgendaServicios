@@ -26,9 +26,6 @@ def crear_servicios(request):
 
     elif request.method == 'POST':
 
-        print("DATOS POST:", request.POST)
-        print("ARCHIVOS FILES:", request.FILES)
-        print("USUARIO EN SESIÓN:", request.session.get('usuario_id'))
         
         name_service =request.POST.get('name_service')
         descrip_service =request.POST.get('descrip_service')
@@ -42,16 +39,19 @@ def crear_servicios(request):
 
         print("🥳Se guardo el servicio correctamente.")
         return redirect('ListaServicios')
-        
-        
+            
     return render(request, "services/crear_servicio.html")
 
 #🌟EDITAR DE SERVICIOS
 
-def editar_servicios(request):
+def editar_servicios(request, id_service):
 
     if request.method == 'GET':
 
-        return render(request, "editar_servicio.html")
+        servicio = Catalogo.objects.get(id = id_service)
 
-    return render(request, "editar_servicio.html")
+        return render(request, "services/editar_servicio.html", {'servicio': servicio})
+
+    
+
+    return render(request, "services/editar_servicio.html")
