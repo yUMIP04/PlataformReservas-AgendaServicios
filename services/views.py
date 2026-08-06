@@ -76,3 +76,29 @@ def editar_servicios(request, id_service):
          return redirect('ListaServicios')
 
     return render(request, "services/editar_servicio.html")
+
+#🌟ELIMINAR SERVICIO
+
+def Eliminar_servicio(request, id_Service):
+
+     try:
+
+          if request.method == 'GET':
+
+               return redirect("ListaServicios")       
+
+          elif request.method == 'POST':
+               
+             eliminar = Catalogo.objects.get(id=id_Service)
+
+             eliminar.delete()
+
+             print("🥳 Se elimino correctamente el servicio.")
+
+             return redirect("ListaServicios")
+
+     except Exception as e:
+
+          print(f"❌Hubo un error al eliminar el servicio: {e}.")
+
+     return render(request, 'services/lista_servicios.html')

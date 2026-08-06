@@ -25,7 +25,7 @@
                 <!--🌟CARD DE MUESTRA-->
                 <div class="card-muestra bg-[#FAFBF5] w-full h-auto p-4 rounded-md shadow-sm flex flex-col justify-between">
                     
-                    <div>
+                    <div class="card">
                         <div class="titulo-card text-center mt-2 text-[Roboto] text-2xl font-semibold text-[#659287] mb-4">
                             <h1 class="Titulo-servicio">{{ servicio.nombre_servicio }}</h1>
                             <input type="hidden" name="" value="{{ servicio.id }}" readonly>
@@ -53,8 +53,13 @@
                         </div>
                     </div>
 
-                    <div class="btn flex flex-row justify-center mt-6">
+                    <div class="btn flex flex-row justify-center mt-6 gap-2">
                         <a href="{% url "EditarServicios" servicio.id %}" class="p-3 w-11/12 text-white rounded-md bg-[#88bda4] hover:bg-[#659287] cursor-pointer transition font-medium text-center">Editar</a>
+                        
+                        <form action="{% url "EliminarServicio" servicio.id %}" method="post" class="w-1/2">
+                            {% csrf_token %}
+                        <button class="btn-eiminar p-3 w-11/12 text-white rounded-md bg-[#FF3636] hover:bg-[#B53A3A] cursor-pointer transition font-medium text-center">Eliminar</button>
+                        </form>
                     </div>
 
                 </div>
@@ -69,4 +74,6 @@
     </div>
 
 </div>
+
+
 {% endblock %}
