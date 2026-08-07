@@ -10,9 +10,12 @@ from services.models import Catalogo
 
 def catalogo(request):
     try:
-        
-        resultados = Catalogo.objects.all()
-        return render(request, 'booking/catalogo.html', {'servicios': resultados})
+
+        if request.method == 'GET':
+           resultados = Catalogo.objects.all()
+           return render(request, 'booking/catalogo.html', {'servicios': resultados})
+
+        elif request.method == 'POST':
         
     except Exception as e:
         print(f"❌ Hubo un error al mostrar la información en el Catálogo: {e}")
