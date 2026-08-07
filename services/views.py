@@ -12,6 +12,8 @@ def lista_servicios(request):
         usuario_id = request.session.get('usuario_id')
 
         resultados = Catalogo.objects.filter(id_profesional = usuario_id)
+        
+
         return render(request, 'services/lista_servicios.html', {'servicios': resultados})
     
     return render(request, 'services/lista_servicios.html')
