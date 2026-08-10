@@ -147,30 +147,37 @@
 
         <div class="form-info">
 
-            
-            <form action="" class=" p-2 ml-4 w-64 shadow-xl border-solid border-2 border-[#659287] rounded-md" method="post">
+            {% if servicios  %}
 
+                {% for servicio in servicios %}
+            <form action="{% url "catalogo" %}" class=" p-2 ml-4 w-64 shadow-xl border-solid border-2 border-[#659287] rounded-md" method="post">
+
+                
+                {% csrf_token %}
                 <div class="flex flex-col ">
                 <label for="" class="text-[#659287] font-bold" >Nombre:</label>
                 <input class="bg-[#C7C5C5] w-42 rounded-sm p-1" type="text" value="{{request.session.nombre_usuario}}" readonly>
 
-                
+                <input type="hidden" value="{{servicio.id}}" name="id-catalogo">
+
                 <label for="" class="text-[#659287] font-bold" >Apellido:</label>
                 <input class="bg-[#C7C5C5] w-42 rounded-sm p-1" type="text" value="{{request.session.apellido_usuario}}" readonly>
 
                  <label for="" class="text-[#659287] font-bold" >Dia de la cita:</label>
-                <input class="bg-[#C7C5C5] w-42 rounded-sm p-1" type="date">
+                <input class="bg-[#C7C5C5] w-42 rounded-sm p-1" type="date" name ="Dia-cita">
 
                 <label for="" class="text-[#659287] font-bold">Hora de cita:</label>
-                <input class="bg-[#C7C5C5] w-42 rounded-sm p-1 mb-3"  type="time">
+                <input class="bg-[#C7C5C5] w-42 rounded-sm p-1 mb-3"  type="time" name ="Hora-cita">
 
                 <div class="btn-agendar p-1 text-white bg-[#88bda4] hover:bg-[#659287] rounded-md text-center transition">
                 <input type="submit" class="cursor-pointer" name="btn-agendar" value="Agendar Cita">
                 </div>
 
             </div>
-
+  
             </form>
+                      {% endfor %}
+{% endif %}
             
         </div>
 
