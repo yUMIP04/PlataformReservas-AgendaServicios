@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from services.models import Catalogo
 from booking.models import Cita
 
@@ -32,12 +33,14 @@ def catalogo(request):
            if resultados_hora_dia:
 
                print("❌Ese horario ya existe, elige otro.")
+               messages.error(request, "Cita no Disponible")
 
                return render(request, 'booking/catalogo.html', {'servicios':resultados})
 
            else:
                Cita.objects.create(fecha=Dia_cita, hora=Hora_cita, id_catalogo_id= id_Catalogo, id_cliente_id=id_cliente)
                print("🥳Se creo una nueva cita con exito.")
+               messages.success(request, "Se agendo la cita con exito")
                return redirect('catalogo')
         
     except Exception as e:
