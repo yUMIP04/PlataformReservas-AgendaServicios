@@ -15,6 +15,8 @@ def catalogo(request):
 
         if request.method == 'GET':
            resultados = Catalogo.objects.all()
+
+
            return render(request, 'booking/catalogo.html', {'servicios': resultados})
 
         elif request.method == 'POST':
@@ -47,7 +49,6 @@ def catalogo(request):
         print(f"❌ Hubo un error al mostrar la información en el Catálogo: {e}")
         
         return render(request, 'booking/catalogo.html', {'servicios': []})
-
 
 #🌟MUESTRA DE MIS RESERVAS
 

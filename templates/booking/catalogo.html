@@ -158,7 +158,7 @@
 
  
 
-    <div class="bg-white w-5/6 h-3/4 rounded-lg m" >
+    <div class="bg-white w-5/6 h-9/10 rounded-lg m" >
 
         <div class="flex w-full flex-row justify-between mt-5">
 
@@ -174,7 +174,7 @@
 
     </div>
 
-        <div class="form-info flex flex-row justify-between mt-6 ">
+        <div class="form-info flex flex-row justify-center mt-6 gap-40 ">
 
             {% if servicios  %}
 
@@ -205,23 +205,63 @@
             </div>
   
             </form>
-                      {% endfor %}
-{% endif %}
+
             
 
 <div class="info-servicio mr-4">
 
-<div class="card-info ">
+ <div class="card-muestra bg-[#FAFBF5] w-full h-auto p-4 rounded-md shadow-sm border border-gray-100 flex flex-col justify-between">
+                                    
+                                    <div>
+                                        <div class="titulo-card text-center mt-2 text-[Roboto] text-xl font-semibold text-[#659287] mb-3">
+                                            <h1 class="Titulo-servicio">{{ servicio.nombre_servicio }}</h1>
+                                        </div>
 
-    <p></p>
+                                        <div class="descripcion-card px-2 text-gray-600 text-sm mb-4">
+                                            <p class="card-descripcion">{{ servicio.descripcion }}</p>
+                                        </div>
 
-</div>
+                                        <div class="contenedor-imagen flex flex-row justify-center mb-4">
+                                            {% if servicio.fondo_img %}
+                                                <div class="imagen-card w-full bg-cover bg-top bg-no-repeat h-36 rounded-sm shadow-inner" 
+                                                     style="background-image: url('{{ servicio.fondo_img.url }}');">
+                                                </div>
+                                            {% else %}
+                                                <div class="imagen-card w-full bg-[#A19C9C] h-36 rounded-sm flex items-center justify-center text-white text-sm">
+                                                    Sin imagen
+                                                </div>
+                                            {% endif %}
+                                        </div>
+
+                                        <div class="informacion-explicita px-2 text-[Roboto] text-xs font-bold text-gray-600 space-y-1">
+                                            <p class="horaInicio-card">Horario: {{ servicio.hora_inicio_trabajo }} - {{ servicio.hora_fin_trabajo }}</p>
+                                            <p class="tiempoLimite-card">Tiempo limite de cita: {{ servicio.tiempo_limite_cita }}</p>
+                                        </div>
+                                    </div>
+
+                                   
+
+                                </div>
 
 </div>
         </div>
 
 
+<div class="cartel-aviso rounded-md bg-gray-400 mt-16 overflow-hidden flex flex-row justify-center items-center">
+
+    
+    <ul class="list-disc text-gray-200 text-[Roboto] ">
+        <li>Revise bien el horario de consulta.</li>
+        <li>Revise el tiempo limite de cita.</li>
+        <li>Revise bien la descripcion.</li>
+    </ul>
+
+
+</div>
     </div>
+                          {% endfor %}
+{% endif %}
+
 </div>
 
 
