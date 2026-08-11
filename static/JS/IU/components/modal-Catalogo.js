@@ -2,6 +2,7 @@ const btn_CerrarModal = document.querySelector(".btn-cerrar");
 const btn_Cita = document.querySelector(".btn-cita");
 const div_modal = document.querySelector(".Modal");
 
+
 function Abrir_Cerrar_Modal(){
 
     if (btn_CerrarModal){
