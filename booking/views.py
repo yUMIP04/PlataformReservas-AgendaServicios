@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from services.models import Catalogo
 from booking.models import Cita
+from users.models import Usuario
 
 # Create your views here.
 
@@ -52,11 +53,27 @@ def catalogo(request):
 
 #🌟MUESTRA DE MIS RESERVAS
 
-def mis_reservas(request):
+def mis_reservas(request, id_usuario):
 
     if request.method == 'GET':
-        return render(request, 'booking/mis_reservas.html')
-    
+
+        #🌟buscar el id usuario
+        try:
+            usuario_id = Usuario.objects.get(id = id_usuario)
+
+            reservas = Cita.objects.filter( id_cliente = id_usuario)
+
+            print("Aqui esta el id del usuario", usuario_id)
+            if usuario_id and reservas:
+
+             return render(request, 'booking/mis_reservas.html', {'usuario_info': usuario_id, 'reservas': reservas})
+            
+        except Exception as e:
+
+            print(f"Hubo un error:{e}")
+            return redirect('catalogo')
+
+        
     return render(request, 'booking/mis_reservas.html')
 
 

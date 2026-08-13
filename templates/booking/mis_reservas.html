@@ -1,2 +1,33 @@
 {% extends "users/base_cliente.html" %}
 {% block title  %}Reservas{% endblock  %}
+
+{% block content %}
+
+<div class="w-full min-h-screen bg-[#E6F2DD] p-6">
+
+    <div class="flex flex-row justify-center items-center">
+    <div class="card-Bienvenida bg-white w-3/5 rounded-lg p-2 transform transition-transform duration-300 hover:-translate-y-1 shadow-lg">
+    <div class="Titulo-reservas">
+
+        <h1 class="text-[Roboto] text-[#659287] text-2xl font-bold">Mis Reservas</h1>
+    </div>
+
+
+    <div class="Descripcion-modulo ">
+
+        <p class="text-[Roboto]">Bienvenido {{request.session.nombre_usuario}} al area de <strong class="text-[#659287]">Mis Reservas</strong> donde podras filtrar, eliminar y ver 
+        los distintos <strong class="text-[#659287]">Servicios</strong> que has solicitado.  </p>
+    </div>
+</div>
+</div>
+
+<!--🌟Muestra de Reservas-->
+
+<div class="Reservas bg-red">
+<p>Hola </p>
+</div>
+
+
+
+</div>
+{% endblock  %}
