@@ -62,7 +62,7 @@ def mis_reservas(request, id_usuario):
             usuario_id = Usuario.objects.get(id = id_usuario)
 
             reservas = Cita.objects.filter( id_cliente = id_usuario)
-
+            
             print("Aqui esta el id del usuario", usuario_id)
             if usuario_id and reservas:
 

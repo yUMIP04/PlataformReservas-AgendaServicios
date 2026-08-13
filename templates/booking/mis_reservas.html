@@ -23,8 +23,41 @@
 
 <!--🌟Muestra de Reservas-->
 
-<div class="Reservas bg-red">
-<p>Hola </p>
+<div class="Reservas  w-1/3 h-84 grid grid-cols-1 gap-y-4  overflow-auto">
+
+    {% if reservas %}
+
+    {% for reserva  in reservas  %}
+
+    <div class="card shadow-md bg-white p-2 w-5/6 rounded-lg hover:translate-y-[-10px] transition">
+
+        <div class="Titulo-card text-[Roboto] font-bold text-[#659287]  ">
+        <h1>{{reserva.id_catalogo.nombre_servicio}} </h1>
+        </div>
+
+        <div class="Info-card flex flex-row justify-between ">
+
+            <div class="info">
+<p><strong class="">Fecha:</strong>{{reserva.fecha}} </p>
+<p> <strong>Hora:</strong>{{reserva.hora}} </p>
+            </div>
+
+            <div class="btn text-2xl text-white">
+                <button type="button" class="bg-red-500 cursor-pointer p-1 rounded-md transition hover:bg-[#7A0909]"><i class="bx bx-trash-x" /></i></button>
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+    {% else %}
+
+   
+    <p>No existen Reservas todavia <strong class="text-[#659287]"><a>Crea una porfavor</a> </strong></p>
+    {% endif %}
+
 </div>
 
 
