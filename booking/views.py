@@ -73,9 +73,36 @@ def mis_reservas(request, id_usuario):
             print(f"Hubo un error:{e}")
             return redirect('catalogo')
 
+    if request.method == 'POST':
+
+        try:
+
+            print("🗣️ Mandando filtros..")
+
+           
+            nombre_servicio = request.POST.get('nombre-servicio', None)
+            fecha_cita = request.POST.get('fecha-cita', None)
+            hora_cita = request.POST.get('hora-cita', None)
+
+            print("🗣️ Nombre del Servicio: ", nombre_servicio)
+            print("🗣️ Fecha de la Cita: ", fecha_cita)
+            print("🗣️ Hora Cita: ", hora_cita)
+
+            usuario_id = Usuario.objects.get(id = id_usuario) 
+            
+
+            if fecha_cita:
+
+                reservas = Cita.objects.filter(fecha=fecha_cita)
+
+                return render(request, 'booking/mis_reservas.html', {'usuario_info': usuario_id, 'reservas': reservas} )
+
+        except Exception as e:
+
+            return render(request, 'booking/mis_reservas.html', {'reservas': []} )
+
         
     return render(request, 'booking/mis_reservas.html')
-
 
 #🌟AREA PARA RESERVAR
 

@@ -40,10 +40,13 @@
     </header>
 
     <!-- Opciones / Menú desplegable -->
-    <div class="p-1 rounded-md opciones bg-gray-300 hidden fixed right-6 top-16 z-50 hover:bg-red-600 hover:text-white duration-300 ease-in-out">
+    <div class="p-1 rounded-md opciones bg-gray-300 hidden fixed right-6 top-16 z-50 ">
         <ul>
-            <li><a href="{% url 'cerrar_sesion' %}">Cerrar Sesión</a></li>
+            <li><a class="hover:bg-[#659287] hover:text-white duration-300 ease-in-out" href="{% url 'mis reservas' request.session.usuario_id %}">Mis Reservas</a></li>
             <hr>
+            <li class="hover:bg-red-600 hover:text-white duration-300 ease-in-out rouded-md"><a href="{% url 'cerrar_sesion' %}">Cerrar Sesión</a></li>
+            
+            
         </ul>
     </div>
 
