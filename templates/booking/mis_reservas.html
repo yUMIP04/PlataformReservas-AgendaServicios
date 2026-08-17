@@ -21,6 +21,30 @@
 </div>
 </div>
 
+<!--🌟MENSAJE DE ELIMINACION DE RESERVA-->
+
+{% if messages %}
+<div class="messages text-center text-white mt-6 flex flex-row justify-center items-center ">
+
+    <div class="border-2 border-[#659287] bg-[#88BDA4] font-bold w-1/2 p-2 rounded-md">
+    {% for message in messages  %}
+    {% if message.tags == "success" %}
+    
+    <p class="success">{{message}} </p>
+     </div>
+
+     <div class="border-2 border-[#7A0909] bg-red-500 font-bold w-1/2 p-2 rounded-md">
+    {% elif message.tags == "error" %}
+    <p class="error">{{message}} </p>
+    </div>
+
+    {% endif %}
+    {% endfor %}
+
+   
+</div>
+{% endif %}
+
 <!--🌟MUESTRA DE RESERVAS-->
 <div class="Muestra-MisReservas flex flex-row justify-center mt-8 gap-30">
 

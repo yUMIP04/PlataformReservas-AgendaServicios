@@ -51,7 +51,8 @@
             <!--🌟 Buscador / Filtros del Catálogo -->
             <div class="sec-Buscador col-span-1 sticky top-6">
                 <div class="buscador bg-white p-6 rounded-lg shadow-sm">
-                    <form action="" method="get" class="flex flex-col gap-3">
+                    <form action="{% url "filtros_catalogo" %}" method="get" class="flex flex-col gap-3">
+                        {% csrf_token %}
                         <div class="titulo-form mb-1">
                             <h1 class="font-[Roboto] text-xl font-extrabold text-[#659287]">Filtros</h1>
                         </div>

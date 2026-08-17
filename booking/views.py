@@ -6,10 +6,13 @@ from users.models import Usuario
 
 # Create your views here.
 
+#=============================================
 """================ RUTAS ================"""
+#=============================================
 
+
+"""🌟========================= CATALOGO 🌟========================="""
 #🌟MUESTRA DE CATALOGOS PRINCIPAL
-
 
 def catalogo(request):
     try:
@@ -51,6 +54,32 @@ def catalogo(request):
         
         return render(request, 'booking/catalogo.html', {'servicios': []})
 
+#🌟FILTROS DE CATALOGO
+
+def filtros_catalogo(request):
+
+    try:
+        if request.method == 'GET':
+
+           return redirect('catalogo')
+
+        elif request.method == 'POST':
+             nombre_servicio = request.POST.get('nombre_servicio', '')
+             horario_inicial = request.POST.get('horario_inicial', '')
+             horario_terminar = request.POST.get('horario_terminar', '')
+             tiempo_consulta = request.POST.get('tiempo_consulta', '')
+
+             if nombre_servicio:
+
+                 print(f"🗣️ El valor de nombre servicio es: {nombre_servicio}.")
+                 servicios = Catalogo.objects.get(nombre_servicio = nombre_servicio)
+
+                 return redirect('catalogo', {'servicios': servicios})
+    except Exception as e:
+
+        print("❌Hubo un error al mostrar los filtros.")
+        return redirect('catalogo')
+"""🌟========================= RESERVAS 🌟========================="""
 #🌟MUESTRA DE MIS RESERVAS
 
 def mis_reservas(request, id_usuario):
@@ -123,9 +152,9 @@ def mis_reservas(request, id_usuario):
     return render(request, 'booking/mis_reservas.html')
 
 #🌟ELIMINAR RESERVA
-
 def Eliminar_Reserva(request, id_reserva):
 
+   
     try:
 
         id_usuario = request.session.get('usuario_id')
@@ -135,19 +164,13 @@ def Eliminar_Reserva(request, id_reserva):
 
         print("🥳Se elimino la reserva de manera correcta.")
 
+        messages.success(request, "Se elimno la reserva correctamente")
         return redirect('mis reservas', id_usuario=id_usuario)
 
     except Exception as e:
 
         print("❌Hubo un error al eliminar la reserva.")
+        messages.error(request, "No se pudo Eliminar la reserva.")
         return redirect('mis reservas', id_usuario=id_usuario)
 
 
-#🌟AREA PARA RESERVAR
-
-def reservar(request):
-
-    if request.method == 'GET':
-        return render(request, 'booking/reservar.html')
-    
-    return render(request, 'booking/reservar.html')
