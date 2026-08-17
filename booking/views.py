@@ -77,32 +77,71 @@ def mis_reservas(request, id_usuario):
 
         try:
 
-            print("🗣️ Mandando filtros..")
+            #🌟Filtros
+            print("🗣️ Mandando filtros...")
 
-           
             nombre_servicio = request.POST.get('nombre-servicio', None)
             fecha_cita = request.POST.get('fecha-cita', None)
             hora_cita = request.POST.get('hora-cita', None)
-
+                     
             print("🗣️ Nombre del Servicio: ", nombre_servicio)
             print("🗣️ Fecha de la Cita: ", fecha_cita)
             print("🗣️ Hora Cita: ", hora_cita)
 
             usuario_id = Usuario.objects.get(id = id_usuario) 
-            
 
+            if fecha_cita and nombre_servicio and hora_cita:
+            
+                reservas = Cita.objects.filter(fecha=fecha_cita, id_catalogo__nombre_servicio=nombre_servicio, hora=hora_cita)
+            
+                return render(request, 'booking/mis_reservas.html', {'usuario_info': usuario_id, 'reservas': reservas} )
+            
             if fecha_cita:
 
                 reservas = Cita.objects.filter(fecha=fecha_cita)
 
                 return render(request, 'booking/mis_reservas.html', {'usuario_info': usuario_id, 'reservas': reservas} )
 
+            if nombre_servicio:
+            
+                reservas = Cita.objects.filter(id_catalogo__nombre_servicio=nombre_servicio)
+            
+                return render(request, 'booking/mis_reservas.html', {'usuario_info': usuario_id, 'reservas': reservas} )
+
+            if hora_cita:
+            
+                reservas = Cita.objects.filter(hora=hora_cita)
+            
+                return render(request, 'booking/mis_reservas.html', {'usuario_info': usuario_id, 'reservas': reservas} )
+
+           
         except Exception as e:
 
             return render(request, 'booking/mis_reservas.html', {'reservas': []} )
 
         
     return render(request, 'booking/mis_reservas.html')
+
+#🌟ELIMINAR RESERVA
+
+def Eliminar_Reserva(request, id_reserva):
+
+    try:
+
+        id_usuario = request.session.get('usuario_id')
+        reserva_id = Cita.objects.get(id= id_reserva)
+
+        reserva_id.delete()
+
+        print("🥳Se elimino la reserva de manera correcta.")
+
+        return redirect('mis reservas', id_usuario=id_usuario)
+
+    except Exception as e:
+
+        print("❌Hubo un error al eliminar la reserva.")
+        return redirect('mis reservas', id_usuario=id_usuario)
+
 
 #🌟AREA PARA RESERVAR
 
