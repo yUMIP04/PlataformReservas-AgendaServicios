@@ -51,7 +51,7 @@
             <!--🌟 Buscador / Filtros del Catálogo -->
             <div class="sec-Buscador col-span-1 sticky top-6">
                 <div class="buscador bg-white p-6 rounded-lg shadow-sm">
-                    <form action="{% url "filtros_catalogo" %}" method="get" class="flex flex-col gap-3">
+                    <form action="{% url "catalogo" %}" method="post" class="flex flex-col gap-3">
                         {% csrf_token %}
                         <div class="titulo-form mb-1">
                             <h1 class="font-[Roboto] text-xl font-extrabold text-[#659287]">Filtros</h1>
@@ -180,7 +180,7 @@
             {% if servicios  %}
 
                 {% for servicio in servicios %}
-            <form action="{% url "catalogo" %}" class="form-agendar p-2 ml-4 w-64 shadow-xl border-solid border-2 border-[#659287] rounded-md" method="post">
+            <form action="{% url "citas" %}" class="form-agendar p-2 ml-4 w-64 shadow-xl border-solid border-2 border-[#659287] rounded-md" method="post">
 
                 
                 {% csrf_token %}

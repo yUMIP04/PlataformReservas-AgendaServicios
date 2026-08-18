@@ -24,31 +24,51 @@ def catalogo(request):
            return render(request, 'booking/catalogo.html', {'servicios': resultados})
 
         elif request.method == 'POST':
+            nombre_servicio = request.POST.get('nombre_servicio', '')
+            horario_inicial = request.POST.get('horario_inicial', '')
+            horario_terminar = request.POST.get('horario_terminar', '')
+            tiempo_consulta = request.POST.get('tiempo_consulta', '')
 
-           id_cliente = request.session.get('usuario_id')
-           print("El id_cliente recuperado es:", id_cliente)
-           
-           resultados = Catalogo.objects.all()
-           Dia_cita = request.POST.get('Dia-cita')
-           Hora_cita = request.POST.get('Hora-cita')
-           id_Catalogo = request.POST.get('id-catalogo')
+            if nombre_servicio and horario_inicial and horario_terminar and tiempo_consulta:
+                        
+                print(f"🗣️ El valor de nombre servicio es: {nombre_servicio}.")
+                print(f"🗣️ El valor de horario inicial: {horario_inicial}.")
+                print(f"🗣️ El valor de horario a terminar: {horario_terminar}.")
+                print(f"🗣️ El valor de tiempo consulta: {tiempo_consulta}.")
 
-           print("El id catalogo es:", id_Catalogo)
-           resultados_hora_dia = Cita.objects.filter(fecha=Dia_cita,hora=Hora_cita).exists()
+                servicios = Catalogo.objects.filter(nombre_servicio = nombre_servicio, hora_inicio_trabajo=horario_inicial, hora_fin_trabajo=horario_terminar, tiempo_limite_cita=tiempo_consulta)
+                        
+                return render(request, 'booking/catalogo.html', {'servicios': servicios})
+            
 
-           if resultados_hora_dia:
+            if nombre_servicio:
+            
+                print(f"🗣️ El valor de nombre servicio es: {nombre_servicio}.")
+                servicios = Catalogo.objects.filter(nombre_servicio = nombre_servicio)
+            
+                return render(request, 'booking/catalogo.html', {'servicios': servicios})
 
-               print("❌Ese horario ya existe, elige otro.")
-               messages.error(request, "Cita no Disponible")
+            if horario_inicial:
 
-               return render(request, 'booking/catalogo.html', {'servicios':resultados})
+                print(f"🗣️ El valor de horario inicial: {horario_inicial}.")
+                servicios = Catalogo.objects.filter(horario_inicio_trabajo = horario_inicial)
+                            
+                return render(request, 'booking/catalogo.html', {'servicios': servicios})
 
-           else:
-               Cita.objects.create(fecha=Dia_cita, hora=Hora_cita, id_catalogo_id= id_Catalogo, id_cliente_id=id_cliente)
-               print("🥳Se creo una nueva cita con exito.")
-               messages.success(request, "Se agendo la cita con exito")
-               return redirect('catalogo')
-        
+            if horario_terminar:
+            
+                print(f"🗣️ El valor de horario a terminar: {horario_terminar}.")
+                servicios = Catalogo.objects.filter(horario_fin_trabajo = horario_terminar)
+                                        
+                return render(request, 'booking/catalogo.html', {'servicios': servicios})
+
+            if tiempo_consulta:
+            
+                print(f"🗣️ El valor de tiempo consulta: {tiempo_consulta}.")
+                servicios = Catalogo.objects.filter(tiempo_limite_cita = tiempo_consulta)
+                                        
+                return render(request, 'booking/catalogo.html', {'servicios': servicios})
+
     except Exception as e:
         print(f"❌ Hubo un error al mostrar la información en el Catálogo: {e}")
         
@@ -56,7 +76,7 @@ def catalogo(request):
 
 #🌟FILTROS DE CATALOGO
 
-def filtros_catalogo(request):
+def Citas(request):
 
     try:
         if request.method == 'GET':
@@ -64,17 +84,29 @@ def filtros_catalogo(request):
            return redirect('catalogo')
 
         elif request.method == 'POST':
-             nombre_servicio = request.POST.get('nombre_servicio', '')
-             horario_inicial = request.POST.get('horario_inicial', '')
-             horario_terminar = request.POST.get('horario_terminar', '')
-             tiempo_consulta = request.POST.get('tiempo_consulta', '')
+            id_cliente = request.session.get('usuario_id')
+            print("El id_cliente recuperado es:", id_cliente)   
 
-             if nombre_servicio:
+            resultados = Catalogo.objects.all()
+            Dia_cita = request.POST.get('Dia-cita')
+            Hora_cita = request.POST.get('Hora-cita')
+            id_Catalogo = request.POST.get('id-catalogo')
 
-                 print(f"🗣️ El valor de nombre servicio es: {nombre_servicio}.")
-                 servicios = Catalogo.objects.get(nombre_servicio = nombre_servicio)
+            print("El id catalogo es:", id_Catalogo)
+            resultados_hora_dia = Cita.objects.filter(fecha=Dia_cita,hora=Hora_cita).exists()
 
-                 return redirect('catalogo', {'servicios': servicios})
+            if resultados_hora_dia:
+
+               print("❌Ese horario ya existe, elige otro.")
+               messages.error(request, "Cita no Disponible")
+
+               return redirect('catalogo')
+
+            else:
+                Cita.objects.create(fecha=Dia_cita, hora=Hora_cita, id_catalogo_id= id_Catalogo, id_cliente_id=id_cliente)
+                print("🥳Se creo una nueva cita con exito.")
+                messages.success(request, "Se agendo la cita con exito")
+                return redirect('catalogo')
     except Exception as e:
 
         print("❌Hubo un error al mostrar los filtros.")
