@@ -97,7 +97,7 @@ def Eliminar_servicio(request, id_Service):
              eliminar.delete()
 
              print("🥳 Se elimino correctamente el servicio.")
-
+            
              return redirect("ListaServicios")
 
      except Exception as e:

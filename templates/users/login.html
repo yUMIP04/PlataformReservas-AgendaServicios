@@ -1,31 +1,49 @@
-{% block title %}Inicio de Sesion{% endblock %}
+
 
 {% block content  %}
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
 
-<form action="/inicio_sesion/" method="post">
-    {% csrf_token %}
-    <div class="titulo-form">
-<h1 class="titulo">Inicio de Sesion</h1>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Akt:wght@100..900&family=Bebas+Neue&family=Bitcount+Prop+Single:wght@100..900&family=Bungee+Shade&family=Geist+Pixel&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body class="bg-[#E6F2DD] h-full flex flex-row justify-center items-center">
+
+     <!--🌟 IMG de fondo -->
+    <div>
+        <p>Hola</p>
     </div>
 
-    <div class="container-labels">
+    <!--🌟 Formulario -->
+    <div class="form-login bg-white flex flex-col p-7 w-1/4 h-1/2 rounded-md shadow-lg">
+         <div class="titulo-form text-center mb-5 ">
+<h1 class="titulo text-[#659287] font-[Roboto] font-extrabold text-xl">Inicio de Sesion</h1>
+    </div>
+<form action="/inicio_sesion/" method="post">
+    {% csrf_token %}
+   
+
+    <div class="container-labels flex flex-col ">
         
         <label for="correo">Correo:</label>
-        <input type="email" name="correo_usuario" required>
+        <input type="email" name="correo_usuario" placeholder="correo" class="rounded-md bg-[#E8E1E1] p-1 focus:outline focus:outline-[#659287]" required>
         
         <label for="clave">Clave:</label>
-        <input type="password" name="clave" required>
+        <input type="password" name="clave" placeholder="clave" class="rounded-md bg-[#E8E1E1] p-1 focus:outline focus:outline-[#659287]" required>
 
-        <div class="btns">
-            <input type="Submit" name="btn-ingresar" value="Entrar">
+        <div class="btns flex flex-row justify-center mt-2">
+            <input class=" transition hover:bg-[#659287] bg-[#88BDA4] text-white rounded-md p-2 w-full cursor-pointer" type="Submit" name="btn-ingresar" value="Entrar">
         </div>
         
     </div>
 
-        <div class="links">
-            <a href="{% url 'registro' %}">¿No tienes cuenta? Registrate</a>
+        <div class="links text-center">
+            <a href="{% url 'registro' %}" class="transition hover:text-[#659287] underline decoration-solid text-[#88BDA4]">¿No tienes cuenta? Registrate</a>
         </div>
 
 </form>
+<div>
 
+</body>
 {% endblock  %}
