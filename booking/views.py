@@ -79,6 +79,7 @@ def filtros_catalogo(request):
 
         print("❌Hubo un error al mostrar los filtros.")
         return redirect('catalogo')
+    
 """🌟========================= RESERVAS 🌟========================="""
 #🌟MUESTRA DE MIS RESERVAS
 
