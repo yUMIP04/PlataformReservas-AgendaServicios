@@ -105,3 +105,8 @@ def Eliminar_servicio(request, id_Service):
           print(f"❌Hubo un error al eliminar el servicio: {e}.")
 
      return render(request, 'services/lista_servicios.html')
+
+#🌟RESERVAS SOLICITADAS
+def Reservas_Solicitadas(request):
+
+     return render(request, 'services/reservas_solicitadas.html')

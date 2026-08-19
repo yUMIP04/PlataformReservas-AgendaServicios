@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Usuario
-
+from django.contrib import messages
 # Create your views here.
 
 """=================== RUTAS ==================="""
@@ -65,9 +65,10 @@ def inicio_sesion(request):
                 print("🌟Iniciando sesion...")
                 print("🥳Inicio de sesion exitoso!")
                 return redirect('catalogo')
+
         
         except Exception as e:
-
+            messages.error(request, "Usuario y/o contraseña incorrectos")
             print(f"Hubo un error al iniciar sesion: {e}")
             return render(request, 'users/login.html')
 
